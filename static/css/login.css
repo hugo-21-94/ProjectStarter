@@ -1,0 +1,412 @@
+/*
+=========================================================
+ProjectStarter
+
+login.css
+
+Styles spécifiques à la page de connexion
+
+=========================================================
+*/
+
+
+
+/*=======================================================
+    CARTE
+=======================================================*/
+
+.login-card{
+
+    background:white;
+
+    padding:40px;
+
+    border-radius:22px;
+
+    box-shadow:var(--shadow);
+
+    animation:fadeUp .7s ease;
+
+}
+
+
+
+.login-card:hover{
+
+    transform:translateY(-5px);
+
+    transition:.35s;
+
+}
+
+
+
+.login-card h2{
+
+    font-size:2rem;
+
+    margin-bottom:30px;
+
+}
+
+
+
+/*=======================================================
+    FORMULAIRE
+=======================================================*/
+
+#login-form{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:22px;
+
+}
+
+
+
+/*=======================================================
+    SE SOUVENIR DE MOI
+=======================================================*/
+
+.remember{
+
+    display:flex;
+
+    align-items:center;
+
+}
+
+
+
+.remember label{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    cursor:pointer;
+
+}
+
+
+
+.remember input{
+
+    width:18px;
+
+    height:18px;
+
+    accent-color:var(--primary);
+
+}
+
+
+
+/*=======================================================
+    SEPARATEUR
+=======================================================*/
+
+.separator{
+
+    position:relative;
+
+    text-align:center;
+
+    margin:10px 0;
+
+}
+
+
+
+.separator::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+
+    top:50%;
+
+    width:100%;
+
+    height:1px;
+
+    background:#dbe3ee;
+
+}
+
+
+
+.separator span{
+
+    position:relative;
+
+    background:white;
+
+    padding:0 18px;
+
+    color:#64748b;
+
+}
+
+
+
+/*=======================================================
+    INSCRIPTION
+=======================================================*/
+
+.register-link{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:15px;
+
+    align-items:center;
+
+}
+
+
+
+.register-btn{
+
+    width:100%;
+
+    height:55px;
+
+    border-radius:12px;
+
+    border:2px solid var(--primary);
+
+    background:white;
+
+    color:var(--primary);
+
+    font-weight:700;
+
+    text-decoration:none;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    transition:.30s;
+
+}
+
+
+
+.register-btn:hover{
+
+    background:var(--primary);
+
+    color:white;
+
+}
+
+
+
+/*=======================================================
+    INFORMATIONS
+=======================================================*/
+
+.info-card{
+
+    background:white;
+
+    border-radius:22px;
+
+    padding:40px;
+
+    box-shadow:var(--shadow);
+
+    animation:fadeUp .9s ease;
+
+}
+
+
+
+.info-card:hover{
+
+    transform:translateY(-5px);
+
+    transition:.35s;
+
+}
+
+
+
+.info-card h3{
+
+    margin-bottom:30px;
+
+    font-size:28px;
+
+}
+
+
+
+.info{
+
+    display:flex;
+
+    gap:18px;
+
+    align-items:center;
+
+    margin-bottom:22px;
+
+}
+
+
+
+.info span{
+
+    width:52px;
+
+    height:52px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    background:#eef4ff;
+
+    border-radius:14px;
+
+    font-size:24px;
+
+}
+
+
+
+.info p{
+
+    color:var(--text-light);
+
+    line-height:1.6;
+
+}
+
+
+
+/*=======================================================
+    RESPONSIVE
+=======================================================*/
+
+@media(max-width:1100px){
+
+    .info-card{
+
+        order:-1;
+
+    }
+
+}
+
+/*=========================================
+    Bouton Connexion
+=========================================*/
+
+.login-btn{
+
+    width:100%;
+
+    height:56px;
+
+    border:none;
+
+    border-radius:14px;
+
+    background:var(--primary);
+
+    color:white;
+
+    font-size:17px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:.30s;
+
+    margin-top:10px;
+
+}
+
+
+
+.login-btn:hover{
+
+    background:var(--primary-hover);
+
+    transform:translateY(-2px);
+
+    box-shadow:
+
+        0 15px 35px
+
+        rgba(37,99,235,.25);
+
+}
+
+
+
+.login-btn:active{
+
+    transform:scale(.98);
+
+}
+
+/*=========================================
+    Messages Flash
+=========================================*/
+
+.flash{
+
+    width:100%;
+
+    padding:15px;
+
+    margin-bottom:20px;
+
+    border-radius:12px;
+
+    font-weight:600;
+
+    text-align:center;
+
+    animation:fadeUp .35s ease;
+
+}
+
+.flash.error{
+
+    background:#FEE2E2;
+
+    color:#B91C1C;
+
+    border:1px solid #FCA5A5;
+
+}
+
+.flash.success{
+
+    background:#DCFCE7;
+
+    color:#166534;
+
+    border:1px solid #86EFAC;
+
+}

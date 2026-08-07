@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Créer un compte - ProjectStarter</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/register.css') }}">
+
+</head>
+
+<body>
+
+    <div class="background"></div>
+
+    <main class="register-container">
+
+        <!-- ========================= -->
+        <!-- Logo -->
+        <!-- ========================= -->
+
+        <div class="logo">
+
+            <a href="/">
+
+                <h1>🚀 ProjectStarter</h1>
+
+            </a>
+
+            <p>
+
+                Crée ton compte gratuitement.
+
+            </p>
+
+        </div>
+
+
+        <!-- ========================= -->
+        <!-- Carte -->
+        <!-- ========================= -->
+
+        <section class="register-card">
+
+            <h2>
+
+                Inscription
+
+            </h2>
+
+            {% with messages = get_flashed_messages(with_categories=true) %}
+
+                {% if messages %}
+
+                    {% for category, message in messages %}
+
+                        <div class="flash {{ category }}">
+
+                            {{ message }}
+
+                        </div>
+
+                    {% endfor %}
+
+                {% endif %}
+
+            {% endwith %}
+
+            <form
+                action="/register"
+                method="POST"
+                id="register-form">
+
+                <!-- Nom d'utilisateur -->
+
+                <div class="input-group">
+
+                    <label>
+
+                        Nom d'utilisateur
+
+                    </label>
+
+                    <input
+                        type="text"
+                        name="username"
+                        id="username"
+                        minlength="3"
+                        maxlength="25"
+                        placeholder="Exemple : Paul"
+                        required>
+
+                </div>
+
+                <!-- Email -->
+
+                <div class="input-group">
+
+                    <label>
+
+                        Adresse e-mail
+
+                    </label>
+
+                    <input
+                        type="email"
+                        name="email"
+                        id="email"
+                        placeholder="exemple@email.com"
+                        required>
+
+                </div>
+
+                <!-- Mot de passe -->
+
+                <div class="input-group">
+
+                    <label>
+
+                        Mot de passe
+
+                    </label>
+
+                    <div class="password-box">
+
+                        <input
+                            type="password"
+                            name="password"
+                            id="password"
+                            minlength="8"
+                            placeholder="Minimum 8 caractères"
+                            required>
+
+                        <button
+                            type="button"
+                            class="toggle-password"
+                            id="toggle-password">
+
+                            👁️
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <!-- Confirmation -->
+
+                <div class="input-group">
+
+                    <label>
+
+                        Confirmation du mot de passe
+
+                    </label>
+
+                    <div class="password-box">
+
+                        <input
+                            type="password"
+                            name="confirm_password"
+                            id="confirm_password"
+                            minlength="8"
+                            placeholder="Confirme ton mot de passe"
+                            required>
+
+                        <button
+                            type="button"
+                            class="toggle-password"
+                            id="toggle-confirm">
+
+                            👁️
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <!-- Force du mot de passe -->
+
+                <div class="password-strength">
+
+                    <div
+                        class="strength-bar"
+                        id="strength-bar">
+
+                    </div>
+
+                </div>
+
+                <p
+                    id="password-message"
+                    class="password-message">
+
+                </p>
+
+                <!-- Conditions -->
+
+                <div class="checkbox">
+
+                    <label>
+
+                        <input
+                            type="checkbox"
+                            id="terms"
+                            required>
+
+                        J'accepte les conditions
+                        d'utilisation.
+
+                    </label>
+
+                </div>
+
+                <!-- Bouton -->
+
+                <button
+                    type="submit"
+                    class="register-btn">
+
+                    Créer mon compte
+
+                </button>
+
+                <!-- ========================= -->
+                <!-- Lien connexion -->
+                <!-- ========================= -->
+
+                <div class="login-link">
+
+                    <p>
+
+                        Déjà un compte ?
+
+                        <a href="/login">
+
+                            Se connecter
+
+                        </a>
+
+                    </p>
+
+                </div>
+
+            </form>
+
+        </section>
+
+
+        <!-- ========================= -->
+        <!-- Avantages -->
+        <!-- ========================= -->
+
+        <section class="features-card">
+
+            <h3>
+
+                Pourquoi créer un compte ?
+
+            </h3>
+
+            <div class="feature">
+
+                <span>🚀</span>
+
+                <p>
+
+                    Génère tes projets en quelques secondes.
+
+                </p>
+
+            </div>
+
+            <div class="feature">
+
+                <span>💾</span>
+
+                <p>
+
+                    Retrouve tes projets depuis ton espace personnel.
+
+                </p>
+
+            </div>
+
+            <div class="feature">
+
+                <span>⚡</span>
+
+                <p>
+
+                    Télécharge tes anciens projets à tout moment.
+
+                </p>
+
+            </div>
+
+            <div class="feature">
+
+                <span>⭐</span>
+
+                <p>
+
+                    Accède aux futures fonctionnalités Premium.
+
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ========================= -->
+    <!-- Footer -->
+    <!-- ========================= -->
+
+    <footer>
+
+        <p>
+
+            © 2026 ProjectStarter • Tous droits réservés
+
+        </p>
+
+    </footer>
+
+
+    <!-- ========================= -->
+    <!-- JavaScript -->
+    <!-- ========================= -->
+
+    <script
+        src="{{ url_for('static', filename='js/register.js') }}">
+    </script>
+
+</body>
+
+</html>

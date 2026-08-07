@@ -1,0 +1,366 @@
+{% extends "base.html" %}
+
+{% block title %}
+
+Dashboard
+
+{% endblock %}
+
+{% block css %}
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/dashboard.css') }}">
+
+{% endblock %}
+
+{% block content %}
+
+<div>
+
+    <div class="logo">
+
+        <a href="/">
+
+            🚀 ProjectStarter
+
+        </a>
+
+    </div>
+
+    <nav>
+
+        <a href="/dashboard">
+
+            Dashboard
+
+        </a>
+
+        <a href="/logout">
+
+            Déconnexion
+
+        </a>
+
+    </nav>
+
+</div>
+
+
+
+<div class="dashboard">
+
+    <!-- ======================================= -->
+    <!-- Bienvenue -->
+    <!-- ======================================= -->
+
+    <section class="welcome">
+
+        <h1>
+
+            Bonjour {{ username }} 👋
+
+        </h1>
+
+        <p>
+
+            Bienvenue sur ton espace ProjectStarter.
+
+        </p>
+
+    </section>
+
+
+
+    <!-- ======================================= -->
+    <!-- Statistiques -->
+    <!-- ======================================= -->
+
+    <section class="stats">
+
+        <div class="stat-card">
+
+            <h2>
+
+                {{ project_count }}
+
+            </h2>
+
+            <p>
+
+                Projets créés
+
+            </p>
+
+        </div>
+
+        <div class="stat-card">
+
+            <h2>
+
+                Gratuit
+
+            </h2>
+
+            <p>
+
+                Abonnement
+
+            </p>
+
+        </div>
+
+        <div class="stat-card">
+
+            <h2>
+
+                0
+
+            </h2>
+
+            <p>
+
+                Téléchargements
+
+            </p>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ======================================= -->
+    <!-- Action principale -->
+    <!-- ======================================= -->
+
+    <section class="create-project">
+
+        <h2>
+
+            Créer un nouveau projet
+
+        </h2>
+
+        <p>
+
+            Lance le générateur de structure pour commencer un nouveau projet.
+
+        </p>
+
+        <a
+            href="/"
+            class="create-btn">
+
+            🚀 Nouveau projet
+
+        </a>
+
+    </section>
+
+    <!-- ======================================= -->
+    <!-- Mes projets -->
+    <!-- ======================================= -->
+
+    <section class="projects">
+
+        <div class="section-title">
+
+            <h2>
+
+                📂 Mes projets
+
+            </h2>
+
+            <a
+                href="/"
+                class="new-project">
+
+                + Nouveau
+
+            </a>
+
+        </div>
+
+        <div class="projects-list">
+
+        {% if projects %}
+
+            {% for project in projects %}
+
+            <div class="project-card">
+
+                <div class="project-header">
+
+                    <h3>
+
+                        📁 {{ project[2] }}
+
+                    </h3>
+
+                </div>
+
+                <div class="project-body">
+
+                    <p>
+
+                        <strong>Type :</strong>
+
+                        {{ project[3] }}
+
+                    </p>
+
+                    <p>
+
+                        <strong>Créé le :</strong>
+
+                        {{ project[5] }}
+
+                    </p>
+
+                </div>
+
+                <div class="project-buttons">
+
+                    <a
+
+                        class="download-btn"
+
+                        href="/download/{{ project[0] }}">
+
+                        ⬇ Télécharger
+
+                    </a>
+
+                    <a
+
+                        class="delete-btn"
+
+                        href="/delete_project/{{ project[0] }}"
+
+                        onclick="return confirm('Supprimer ce projet ?');">
+
+                        🗑 Supprimer
+
+                    </a>
+
+                </div>
+
+            </div>
+
+            {% endfor %}
+
+        {% else %}
+
+            <div class="empty-project">
+
+                <h3>
+
+                    Aucun projet
+
+                </h3>
+
+                <p>
+
+                    Génère ton premier projet !
+
+                </p>
+
+            </div>
+
+        {% endif %}
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ======================================= -->
+    <!-- Actions rapides -->
+    <!-- ======================================= -->
+
+    <section class="quick-actions">
+
+        <h2>
+
+            ⚙️ Actions rapides
+
+        </h2>
+
+        <div class="actions-grid">
+
+            <a
+                href="/"
+                class="action-card">
+
+                <span>🚀</span>
+
+                <h3>
+
+                    Générer un projet
+
+                </h3>
+
+            </a>
+
+            <a
+                href="#"
+                class="action-card">
+
+                <span>👤</span>
+
+                <h3>
+
+                    Mon profil
+
+                </h3>
+
+            </a>
+
+            <a
+                href="/pricing"
+                class="action-card">
+
+                <span>💳</span>
+
+                <h3>
+
+                    Premium
+
+                </h3>
+
+            </a>
+
+            <a
+                href="/logout"
+                class="action-card">
+
+                <span>🚪</span>
+
+                <h3>
+
+                    Déconnexion
+
+                </h3>
+
+            </a>
+
+        </div>
+
+    </section>
+
+</div>
+
+
+
+<div>
+
+    <p>
+
+        © 2026 ProjectStarter • Dashboard
+
+    </p>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,1040 @@
+/*
+=========================================================
+ProjectStarter
+
+dashboard.css
+
+=========================================================
+*/
+
+
+
+/*=========================================
+VARIABLES
+=========================================*/
+
+:root{
+
+    --primary:#2563eb;
+
+    --primary-hover:#1d4ed8;
+
+    --background:#f4f7fb;
+
+    --white:#ffffff;
+
+    --text:#1e293b;
+
+    --text-light:#64748b;
+
+    --shadow:
+
+        0 20px 45px rgba(0,0,0,.08);
+
+}
+
+
+
+/*=========================================
+RESET
+=========================================*/
+
+*{
+
+    margin:0;
+
+    padding:0;
+
+    box-sizing:border-box;
+
+}
+
+
+
+body{
+
+    font-family:
+
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    background:var(--background);
+
+    color:var(--text);
+
+}
+
+
+
+/*=========================================
+HEADER
+=========================================*/
+
+header{
+
+    width:100%;
+
+    background:white;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:20px 8%;
+
+    box-shadow:0 4px 20px rgba(0,0,0,.05);
+
+}
+
+
+
+.logo a{
+
+    text-decoration:none;
+
+    color:var(--primary);
+
+    font-size:30px;
+
+    font-weight:800;
+
+}
+
+
+
+nav{
+
+    display:flex;
+
+    gap:20px;
+
+}
+
+
+
+nav a{
+
+    text-decoration:none;
+
+    color:var(--text);
+
+    font-weight:600;
+
+    transition:.3s;
+
+}
+
+
+
+nav a:hover{
+
+    color:var(--primary);
+
+}
+
+
+
+/*=========================================
+CONTENU
+=========================================*/
+
+.dashboard{
+
+    width:min(1300px,92%);
+
+    margin:50px auto;
+
+}
+
+
+
+/*=========================================
+BIENVENUE
+=========================================*/
+
+.welcome{
+
+    background:white;
+
+    padding:40px;
+
+    border-radius:20px;
+
+    box-shadow:var(--shadow);
+
+    margin-bottom:35px;
+
+}
+
+
+
+.welcome h1{
+
+    font-size:38px;
+
+    margin-bottom:15px;
+
+}
+
+
+
+.welcome p{
+
+    color:var(--text-light);
+
+    font-size:18px;
+
+}
+
+/*=========================================
+STATISTIQUES
+=========================================*/
+
+.stats{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:25px;
+
+    margin-bottom:35px;
+
+}
+
+
+
+.stat-card{
+
+    background:white;
+
+    padding:30px;
+
+    border-radius:20px;
+
+    box-shadow:var(--shadow);
+
+    text-align:center;
+
+    transition:.3s;
+
+}
+
+
+
+.stat-card:hover{
+
+    transform:translateY(-6px);
+
+}
+
+
+
+.stat-card h2{
+
+    font-size:34px;
+
+    color:var(--primary);
+
+    margin-bottom:10px;
+
+}
+
+
+
+.stat-card p{
+
+    color:var(--text-light);
+
+    font-weight:600;
+
+}
+
+
+
+/*=========================================
+CREER UN PROJET
+=========================================*/
+
+.create-project{
+
+    background:linear-gradient(
+        135deg,
+        #2563eb 0%,
+        #4f46e5 100%
+    );
+
+    color:white;
+
+    padding:40px;
+
+    border-radius:22px;
+
+    margin-bottom:35px;
+
+    box-shadow:
+        0 20px 45px rgba(37,99,235,.25);
+
+}
+
+
+
+.create-project h2{
+
+    font-size:32px;
+
+    margin-bottom:15px;
+
+}
+
+
+
+.create-project p{
+
+    opacity:.95;
+
+    margin-bottom:25px;
+
+    line-height:1.6;
+
+}
+
+
+
+.create-btn{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:10px;
+
+    padding:16px 28px;
+
+    background:white;
+
+    color:var(--primary);
+
+    text-decoration:none;
+
+    font-weight:700;
+
+    border-radius:14px;
+
+    transition:.3s;
+
+}
+
+
+
+.create-btn:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:
+        0 12px 30px rgba(255,255,255,.25);
+
+}
+
+
+
+/*=========================================
+SECTION TITRE
+=========================================*/
+
+.section-title{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:20px;
+
+}
+
+
+
+.section-title h2{
+
+    font-size:28px;
+
+}
+
+
+
+.new-project{
+
+    background:var(--primary);
+
+    color:white;
+
+    text-decoration:none;
+
+    padding:10px 18px;
+
+    border-radius:12px;
+
+    font-weight:700;
+
+    transition:.3s;
+
+}
+
+
+
+.new-project:hover{
+
+    background:var(--primary-hover);
+
+}
+
+
+
+/*=========================================
+MES PROJETS
+=========================================*/
+
+.projects{
+
+    background:white;
+
+    padding:35px;
+
+    border-radius:22px;
+
+    box-shadow:var(--shadow);
+
+    margin-bottom:35px;
+
+}
+
+
+
+.projects-list{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+
+}
+
+
+
+/* Carte vide */
+
+.empty-project{
+
+    border:2px dashed #cbd5e1;
+
+    border-radius:18px;
+
+    padding:50px 25px;
+
+    text-align:center;
+
+    background:#f8fafc;
+
+}
+
+
+
+.empty-project h3{
+
+    margin-bottom:12px;
+
+    font-size:22px;
+
+}
+
+
+
+.empty-project p{
+
+    color:var(--text-light);
+
+    line-height:1.6;
+
+}
+
+
+
+/* Exemple de carte projet (pour plus tard) */
+
+.project-card{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:20px;
+
+    border:1px solid #e2e8f0;
+
+    border-radius:16px;
+
+    transition:.3s;
+
+}
+
+
+
+.project-card:hover{
+
+    border-color:var(--primary);
+
+    transform:translateY(-2px);
+
+}
+
+
+
+.project-info h3{
+
+    margin-bottom:6px;
+
+}
+
+
+
+.project-info p{
+
+    color:var(--text-light);
+
+    font-size:14px;
+
+}
+
+
+
+.project-actions{
+
+    display:flex;
+
+    gap:12px;
+
+}
+
+
+
+.project-actions a{
+
+    padding:10px 16px;
+
+    border-radius:10px;
+
+    text-decoration:none;
+
+    font-weight:600;
+
+    transition:.3s;
+
+}
+
+
+
+.download-btn{
+
+    background:#ecfdf5;
+
+    color:#059669;
+
+}
+
+
+
+.download-btn:hover{
+
+    background:#d1fae5;
+
+}
+
+
+
+.delete-btn{
+
+    background:#fef2f2;
+
+    color:#dc2626;
+
+}
+
+
+
+.delete-btn:hover{
+
+    background:#fee2e2;
+
+}
+
+/*=======================================================
+    ACTIONS RAPIDES
+=======================================================*/
+
+.quick-actions{
+
+    margin-top:40px;
+
+}
+
+
+
+.quick-actions h2{
+
+    margin-bottom:25px;
+
+    font-size:28px;
+
+}
+
+
+
+.actions-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+
+    gap:25px;
+
+}
+
+
+
+.action-card{
+
+    background:white;
+
+    border-radius:20px;
+
+    padding:35px;
+
+    text-decoration:none;
+
+    color:var(--text);
+
+    box-shadow:var(--shadow);
+
+    transition:.30s;
+
+    text-align:center;
+
+}
+
+
+
+.action-card span{
+
+    font-size:42px;
+
+    display:block;
+
+    margin-bottom:18px;
+
+}
+
+
+
+.action-card h3{
+
+    font-size:20px;
+
+}
+
+
+
+.action-card:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:
+
+        0 20px 45px rgba(37,99,235,.18);
+
+}
+
+
+
+/*=======================================================
+    BOUTONS
+=======================================================*/
+
+.create-btn,
+
+.new-project{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:10px;
+
+    padding:15px 28px;
+
+    border-radius:14px;
+
+    background:var(--primary);
+
+    color:white;
+
+    text-decoration:none;
+
+    font-weight:700;
+
+    transition:.30s;
+
+}
+
+
+
+.create-btn:hover,
+
+.new-project:hover{
+
+    background:var(--primary-hover);
+
+    transform:translateY(-2px);
+
+}
+
+
+
+/*=======================================================
+    ANIMATIONS
+=======================================================*/
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(25px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+
+
+.welcome,
+
+.stats,
+
+.create-project,
+
+.projects,
+
+.quick-actions{
+
+    animation:fadeUp .6s ease;
+
+}
+
+
+
+.stat-card,
+
+.action-card,
+
+.empty-project{
+
+    animation:fadeUp .8s ease;
+
+}
+
+
+
+/*=======================================================
+    FOOTER
+=======================================================*/
+
+footer{
+
+    margin-top:70px;
+
+    padding:30px;
+
+    text-align:center;
+
+    color:var(--text-light);
+
+}
+
+
+
+/*=======================================================
+    RESPONSIVE
+=======================================================*/
+
+@media(max-width:1000px){
+
+    header{
+
+        flex-direction:column;
+
+        gap:20px;
+
+    }
+
+}
+
+
+
+@media(max-width:800px){
+
+    .welcome h1{
+
+        font-size:30px;
+
+    }
+
+    .stats{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .actions-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
+
+
+
+@media(max-width:600px){
+
+    header{
+
+        padding:20px;
+
+    }
+
+    nav{
+
+        flex-direction:column;
+
+        width:100%;
+
+        text-align:center;
+
+    }
+
+    .dashboard{
+
+        width:95%;
+
+    }
+
+    .welcome,
+
+    .create-project,
+
+    .projects,
+
+    .action-card,
+
+    .stat-card{
+
+        padding:25px;
+
+    }
+
+}
+
+
+
+/*=======================================================
+    SCROLLBAR
+=======================================================*/
+
+::-webkit-scrollbar{
+
+    width:10px;
+
+}
+
+
+
+::-webkit-scrollbar-track{
+
+    background:#edf2f7;
+
+}
+
+
+
+::-webkit-scrollbar-thumb{
+
+    background:var(--primary);
+
+    border-radius:30px;
+
+}
+
+
+
+::-webkit-scrollbar-thumb:hover{
+
+    background:var(--primary-hover);
+
+}
+
+
+
+/*=======================================================
+    SELECTION
+=======================================================*/
+
+::selection{
+
+    background:var(--primary);
+
+    color:white;
+
+}
+
+/*=======================================================
+    PROJECT CARD
+=======================================================*/
+
+.project-card{
+
+    background:white;
+
+    border-radius:18px;
+
+    padding:25px;
+
+    margin-bottom:20px;
+
+    box-shadow:var(--shadow);
+
+    transition:.30s;
+
+}
+
+.project-card:hover{
+
+    transform:translateY(-5px);
+
+}
+
+.project-header{
+
+    margin-bottom:15px;
+
+}
+
+.project-header h3{
+
+    color:var(--primary);
+
+}
+
+.project-body p{
+
+    margin-bottom:10px;
+
+    color:var(--text-light);
+
+}
+
+/*=======================================================
+    Boutons des projets
+=======================================================*/
+
+.project-buttons{
+
+    display:flex;
+
+    gap:15px;
+
+    margin-top:20px;
+
+}
+
+
+
+.download-btn,
+
+.delete-btn{
+
+    flex:1;
+
+    text-align:center;
+
+    text-decoration:none;
+
+    padding:12px;
+
+    border-radius:12px;
+
+    font-weight:700;
+
+    transition:.30s;
+
+}
+
+
+
+.download-btn{
+
+    background:#2563eb;
+
+    color:white;
+
+}
+
+
+
+.download-btn:hover{
+
+    background:#1d4ed8;
+
+}
+
+
+
+.delete-btn{
+
+    background:#ef4444;
+
+    color:white;
+
+}
+
+
+
+.delete-btn:hover{
+
+    background:#dc2626;
+
+}
+
+/*=======================================================
+    FIN
+=======================================================*/

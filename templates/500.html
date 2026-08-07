@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block title %}
+
+500 - Erreur serveur
+
+{% endblock %}
+
+{% block css %}
+
+{{ super() }}
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/error.css') }}">
+
+{% endblock %}
+
+{% block content %}
+
+<section class="error-container">
+
+    <div class="error-number">
+
+        500
+
+    </div>
+
+    <h1>
+
+        Une erreur est survenue
+
+    </h1>
+
+    <p>
+
+        Le serveur a rencontré un problème inattendu.
+
+    </p>
+
+    <div class="buttons">
+
+        <a href="/" class="primary-btn">
+
+            Retour à l'accueil
+
+        </a>
+
+    </div>
+
+</section>
+
+{% endblock %}

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>
+
+        {% block title %}
+
+        ProjectStarter
+
+        {% endblock %}
+
+    </title>
+
+    {% block css %}
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/style.css') }}">
+
+    {% endblock %}
+
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">
+
+        <a href="/">
+
+            🚀 <strong>ProjectStarter</strong>
+
+        </a>
+
+    </div>
+
+    <nav>
+
+        <a href="/">Accueil</a>
+
+        <a href="/documentation">
+
+            Documentation
+
+        </a>
+
+        <a href="/pricing">
+
+            Tarifs
+
+        </a>
+
+        {% if session.get("user_id") %}
+
+            <a href="/dashboard">
+
+                Dashboard
+
+            </a>
+
+        {% if session.get("is_admin") == 1 %}
+
+        <a href="/admin">
+
+            Administration
+
+        </a>
+
+        {% endif %}
+
+            <a
+                href="/logout"
+                class="logout-link">
+
+                Déconnexion
+
+            </a>
+
+        {% else %}
+
+            <a
+                href="/login"
+                class="login-link">
+
+                Connexion
+
+            </a>
+
+        {% endif %}
+
+    </nav>
+
+</header>
+
+<main>
+
+{% block content %}
+
+{% endblock %}
+
+</main>
+
+<footer>
+
+<p>
+
+© 2026 ProjectStarter
+
+</p>
+
+</footer>
+
+{% block js %}
+
+{% endblock %}
+
+</body>
+
+</html>

@@ -1,0 +1,297 @@
+{% extends "base.html" %}
+
+{% block title %}
+
+Documentation
+
+{% endblock %}
+
+{% block css %}
+
+{{ super() }}
+
+<link
+rel="stylesheet"
+href="{{ url_for('static', filename='css/documentation.css') }}">
+
+{% endblock %}
+
+{% block content %}
+
+<section class="hero-doc">
+
+    <h1>
+
+        📚 Documentation
+
+    </h1>
+
+    <p>
+
+        Tout ce qu'il faut savoir pour utiliser ProjectStarter.
+
+    </p>
+
+</section>
+
+
+
+<section class="doc-container">
+
+    <!-- =============================== -->
+
+    <div class="doc-card">
+
+        <h2>
+
+            🚀 Générer un projet
+
+        </h2>
+
+        <ol>
+
+            <li>Choisissez un nom de projet.</li>
+
+            <li>Sélectionnez HTML ou Flask.</li>
+
+            <li>Ajoutez vos pages.</li>
+
+            <li>Choisissez les options souhaitées.</li>
+
+            <li>Cliquez sur <strong>Générer</strong>.</li>
+
+        </ol>
+
+    </div>
+
+    <!-- =============================== -->
+
+    <div class="doc-card">
+
+        <h2>
+
+            📥 Télécharger le projet
+
+        </h2>
+
+        <p>
+
+            Une fois la génération terminée, un fichier ZIP sera automatiquement téléchargé sur votre ordinateur.
+
+        </p>
+
+    </div>
+
+    <!-- =============================== -->
+
+    <div class="doc-card">
+
+        <h2>
+
+            📂 Décompresser le ZIP
+
+        </h2>
+
+        <p>
+
+            Windows :
+
+        </p>
+
+        <ul>
+
+            <li>Clic droit.</li>
+
+            <li>Extraire tout…</li>
+
+        </ul>
+
+        <p>
+
+            macOS :
+
+        </p>
+
+        <ul>
+
+            <li>Double-cliquez simplement sur le ZIP.</li>
+
+        </ul>
+
+    </div>
+
+    <!-- =============================== -->
+
+    <div class="doc-card">
+
+        <h2>
+
+            💻 Ouvrir dans Visual Studio Code
+
+        </h2>
+
+        <ol>
+
+            <li>Ouvrir Visual Studio Code.</li>
+
+            <li>Fichier → Ouvrir un dossier.</li>
+
+            <li>Sélectionner le dossier du projet.</li>
+
+        </ol>
+
+    </div>
+
+    <!-- =============================== -->
+
+    <div class="doc-card">
+
+        <h2>
+
+            🌐 Projet HTML
+
+        </h2>
+
+        <ol>
+
+            <li>Ouvrez <strong>home.html</strong>.</li>
+
+            <li>Ou utilisez l'extension Live Server.</li>
+
+        </ol>
+
+    </div>
+
+    <!-- =============================== -->
+
+    <div class="doc-card">
+
+        <h2>
+
+            🐍 Projet Flask
+
+        </h2>
+
+<pre>
+
+pip install -r requirements.txt
+
+python app.py
+
+</pre>
+
+        <p>
+
+            Ensuite ouvrez :
+
+        </p>
+
+<pre>
+
+http://127.0.0.1:5000
+
+</pre>
+
+    </div>
+
+</section>
+
+
+
+<section class="faq">
+
+<h2>
+
+Questions fréquentes
+
+</h2>
+
+<div class="faq-item">
+
+<h3>
+
+Pourquoi mon CSS ne se charge pas ?
+
+</h3>
+
+<p>
+
+Vérifiez que vous ouvrez bien votre projet depuis Live Server ou Flask.
+
+</p>
+
+</div>
+
+<div class="faq-item">
+
+<h3>
+
+Comment ajouter une nouvelle page ?
+
+</h3>
+
+<p>
+
+Ajoutez simplement un nouveau fichier HTML, CSS et JavaScript dans votre projet.
+
+</p>
+
+</div>
+
+<div class="faq-item">
+
+<h3>
+
+Puis-je modifier les fichiers générés ?
+
+</h3>
+
+<p>
+
+Oui. Tous les fichiers vous appartiennent et peuvent être modifiés librement.
+
+</p>
+
+</div>
+
+<div class="faq-item">
+
+<h3>
+
+ProjectStarter est-il gratuit ?
+
+</h3>
+
+<p>
+
+Oui. La première version est entièrement gratuite.
+
+</p>
+
+</div>
+
+<div class="faq-item">
+
+<h3>
+
+Puis-je utiliser ces projets pour des clients ?
+
+</h3>
+
+<p>
+
+Oui. Les projets générés peuvent être utilisés pour vos projets personnels ou professionnels.
+
+</p>
+
+</div>
+
+</section>
+
+{% endblock %}
+
+{% block js %}
+
+<script src="{{ url_for('static', filename='js/documentation.js') }}"></script>
+
+{% endblock %}

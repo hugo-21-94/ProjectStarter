@@ -1,0 +1,29 @@
+# Environnement virtuel
+.venv/
+venv/
+
+# Cache Python
+__pycache__/
+*.pyc
+
+# Base de données
+database.db
+
+# Fichiers générés
+generated_projects/
+storage/
+
+# Fichiers temporaires
+*.zip
+*.log
+*.tmp
+
+# Configuration de l'éditeur
+.vscode/
+.idea/
+
+# Système
+.DS_Store
+Thumbs.db
+
+temp/

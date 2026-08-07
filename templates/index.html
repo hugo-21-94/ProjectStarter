@@ -1,0 +1,438 @@
+{% extends "base.html" %}
+
+{% block title %}
+
+Accueil
+
+{% endblock %}
+
+{% block content %}
+
+<section class="hero">
+
+    <h1>
+
+        Crée le squelette de ton projet en quelques secondes
+
+    </h1>
+
+    <p>
+
+        Génère automatiquement tous les dossiers
+        nécessaires pour commencer ton projet web.
+
+    </p>
+
+</section>
+
+
+
+
+
+<section class="generator-card">
+
+<form
+    id="generator-form"
+    action="/generate"
+    method="POST">
+
+
+
+<!-- ====================================================== -->
+<!-- NOM DU PROJET -->
+<!-- ====================================================== -->
+
+<div class="form-group">
+
+    <label for="project-name">
+
+        Nom du projet
+
+    </label>
+
+    <input
+
+        id="project-name"
+
+        name="project_name"
+
+        type="text"
+
+        placeholder="MonProjet"
+
+        required
+
+    >
+
+</div>
+
+
+
+
+
+<!-- ====================================================== -->
+<!-- TYPE -->
+<!-- ====================================================== -->
+
+<div class="form-group">
+
+<label>
+
+    Type de projet
+
+</label>
+
+<div class="radio-group">
+
+<label>
+
+<input
+
+type="radio"
+
+name="project_type"
+
+value="html"
+
+checked
+
+>
+
+HTML / CSS / JS
+
+</label>
+
+<label>
+
+<input
+
+type="radio"
+
+name="project_type"
+
+value="flask"
+
+>
+
+Flask
+
+</label>
+
+</div>
+
+</div>
+
+
+
+
+
+<!-- ====================================================== -->
+<!-- PAGES -->
+<!-- ====================================================== -->
+
+<div class="form-group">
+
+<label>
+
+Pages du projet
+
+</label>
+
+<div id="pages-container">
+
+<div class="page-row">
+
+<input
+
+type="text"
+
+class="page-input"
+
+name="pages"
+
+placeholder="home"
+
+value="home"
+
+>
+
+<button
+
+type="button"
+
+class="remove-page"
+
+>
+
+❌
+
+</button>
+
+</div>
+
+</div>
+
+<button
+
+type="button"
+
+id="add-page"
+
+class="add-page-btn"
+
+>
+
++ Ajouter une page
+
+</button>
+
+</div>
+
+
+
+
+
+<!-- ====================================================== -->
+<!-- OPTIONS -->
+<!-- ====================================================== -->
+
+<div class="options">
+
+
+
+<div class="option-card">
+
+<h3>
+
+Fichiers
+
+</h3>
+
+
+
+<label>
+
+<input
+
+type="checkbox"
+
+name="create_html"
+
+checked
+
+>
+
+HTML
+
+</label>
+
+
+
+<label>
+
+<input
+
+type="checkbox"
+
+name="create_css"
+
+checked
+
+>
+
+CSS
+
+</label>
+
+
+
+<label>
+
+<input
+
+type="checkbox"
+
+name="create_js"
+
+checked
+
+>
+
+JavaScript
+
+</label>
+
+</div>
+
+
+
+
+
+<div class="option-card">
+
+<h3>
+
+Options
+
+</h3>
+
+
+
+<label>
+
+<input
+
+type="checkbox"
+
+name="create_readme"
+
+>
+
+README.md
+
+</label>
+
+
+
+<label>
+
+<input
+
+type="checkbox"
+
+name="create_gitignore"
+
+>
+
+.gitignore
+
+</label>
+
+
+
+<label>
+
+<input
+
+type="checkbox"
+
+name="create_database"
+
+id="database-checkbox"
+>
+
+database.db
+
+</label>
+
+
+
+<label>
+
+<input
+
+type="checkbox"
+
+name="create_requirements"
+
+id="requirements-checkbox"
+>
+
+requirements.txt
+
+</label>
+
+
+
+<label>
+
+<input
+
+type="checkbox"
+
+name="create_config"
+
+id="config-checkbox"
+>
+
+config.py
+
+</label>
+
+</div>
+
+</div>
+
+
+
+
+
+<!-- ====================================================== -->
+<!-- APERCU -->
+<!-- ====================================================== -->
+
+<div class="preview">
+
+<h3>
+
+📁 Aperçu du projet
+
+</h3>
+
+<pre id="project-preview">
+
+MonProjet/
+
+</pre>
+
+</div>
+
+
+
+
+
+<!-- ====================================================== -->
+<!-- GENERER -->
+<!-- ====================================================== -->
+
+<button
+
+class="generate-btn"
+
+id="generate-button"
+
+type="submit"
+
+>
+
+🚀 Générer mon projet
+
+</button>
+
+</form>
+
+</section>
+
+</div>
+
+
+
+
+
+<div>
+
+<p>
+
+© 2026 ProjectStarter
+
+</p>
+
+</div>
+
+{% endblock %}
+
+{% block js %}
+
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+{% endblock %}

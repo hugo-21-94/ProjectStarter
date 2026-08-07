@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+{% block title %}
+
+Administration
+
+{% endblock %}
+
+{% block css %}
+
+{{ super() }}
+
+<link
+rel="stylesheet"
+href="{{ url_for('static', filename='css/admin.css') }}">
+
+{% endblock %}
+
+{% block content %}
+
+<section class="admin-container">
+
+    <h1>
+
+        🛠️ Administration
+
+    </h1>
+
+    <p class="subtitle">
+
+        Tableau de bord administrateur
+
+    </p>
+
+    <div class="stats-grid">
+
+        <div class="stat-card">
+
+            <span>👤</span>
+
+            <h2>{{ total_users }}</h2>
+
+            <p>Utilisateurs</p>
+
+        </div>
+
+        <div class="stat-card">
+
+            <span>📦</span>
+
+            <h2>{{ total_projects }}</h2>
+
+            <p>Projets générés</p>
+
+        </div>
+
+    </div>
+
+    <div class="admin-actions">
+
+        <a href="/admin/users" class="admin-btn">
+
+            👥 Gérer les utilisateurs
+
+        </a>
+
+        <a href="/admin/projects" class="admin-btn">
+
+            📂 Voir les projets
+
+        </a>
+
+        <a href="/" class="admin-btn secondary">
+
+            🏠 Retour au site
+
+        </a>
+
+    </div>
+
+</section>
+
+{% endblock %}

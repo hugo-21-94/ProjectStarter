@@ -1,0 +1,214 @@
+/*
+=========================================================
+ProjectStarter
+
+documentation.css
+
+=========================================================
+*/
+
+.hero-doc{
+
+    text-align:center;
+
+    padding:80px 20px 60px;
+
+}
+
+.hero-doc h1{
+
+    font-size:3rem;
+
+    margin-bottom:20px;
+
+    color:var(--primary);
+
+}
+
+.hero-doc p{
+
+    font-size:1.2rem;
+
+    color:var(--text-light);
+
+}
+
+.doc-container{
+
+    width:min(1200px,92%);
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
+
+    gap:30px;
+
+    padding-bottom:80px;
+
+}
+
+.doc-card{
+
+    background:var(--card);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:22px;
+
+    padding:30px;
+
+    box-shadow:0 20px 40px rgba(0,0,0,.30);
+
+    transition:.35s;
+
+}
+
+.doc-card:hover{
+
+    transform:translateY(-8px);
+
+}
+
+.doc-card h2{
+
+    color:white;
+
+    margin-bottom:20px;
+
+}
+
+.doc-card p{
+
+    color:var(--text-light);
+
+    line-height:1.8;
+
+}
+
+.doc-card ol,
+.doc-card ul{
+
+    padding-left:22px;
+
+    line-height:2;
+
+}
+
+.doc-card li{
+
+    color:var(--text-light);
+
+}
+
+.doc-card pre{
+
+    background:#111827;
+
+    color:#67E8F9;
+
+    padding:18px;
+
+    border-radius:14px;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    overflow:auto;
+
+}
+
+.faq{
+
+    width:min(1100px,92%);
+
+    margin:80px auto;
+
+}
+
+.faq h2{
+
+    text-align:center;
+
+    font-size:2.3rem;
+
+    margin-bottom:50px;
+
+}
+
+.faq-item{
+
+    background:var(--card);
+
+    border:1px solid rgba(255,255,255,.08);
+
+}
+
+
+.faq-item h3{
+
+    color:white;
+
+}
+
+.faq-item h3:hover{
+
+    color:var(--primary);
+
+}
+
+.faq-item h3::after{
+
+    content:"+";
+
+    position:absolute;
+
+    right:25px;
+
+    font-size:28px;
+
+    transition:.3s;
+
+}
+
+.faq-item.active h3::after{
+
+    transform:rotate(45deg);
+
+}
+
+.faq-item p{
+
+    color:var(--text-light);
+
+}
+
+.faq-item.active p{
+
+    max-height:250px;
+
+    padding:0 25px 25px;
+
+}
+
+@media(max-width:900px){
+
+    .hero-doc h1{
+
+        font-size:2.3rem;
+
+    }
+
+    .doc-container{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
+
+.doc-card li{
+
+    color:#334155;
+
+}

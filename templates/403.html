@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block title %}
+
+403 - Accès interdit
+
+{% endblock %}
+
+{% block css %}
+
+{{ super() }}
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/error.css') }}">
+
+{% endblock %}
+
+{% block content %}
+
+<section class="error-container">
+
+    <div class="error-number">
+
+        403
+
+    </div>
+
+    <h1>
+
+        Accès interdit
+
+    </h1>
+
+    <p>
+
+        Vous n'avez pas les permissions nécessaires pour accéder à cette page.
+
+    </p>
+
+    <div class="buttons">
+
+        <a href="/" class="primary-btn">
+
+            Retour à l'accueil
+
+        </a>
+
+    </div>
+
+</section>
+
+{% endblock %}

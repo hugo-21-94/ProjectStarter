@@ -1,0 +1,943 @@
+/*
+=========================================================
+ProjectStarter
+
+register.css
+
+Page d'inscription
+
+Partie 1
+
+=========================================================
+*/
+
+
+/*=======================================================
+    VARIABLES
+=======================================================*/
+
+:root {
+
+    --primary: #2563eb;
+    --primary-hover: #1d4ed8;
+
+    --secondary: #0f172a;
+
+    --background: #f4f7fb;
+
+    --white: #ffffff;
+
+    --border: #dbe3ee;
+
+    --text: #1e293b;
+
+    --text-light: #64748b;
+
+    --success: #22c55e;
+
+    --danger: #ef4444;
+
+    --shadow:
+
+        0 20px 45px rgba(15, 23, 42, 0.08);
+
+}
+
+
+
+/*=======================================================
+    RESET
+=======================================================*/
+
+*{
+
+    margin:0;
+
+    padding:0;
+
+    box-sizing:border-box;
+
+}
+
+
+
+body{
+
+    font-family:
+
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    background:var(--background);
+
+    color:var(--text);
+
+    min-height:100vh;
+
+    overflow-x:hidden;
+
+}
+
+
+
+/*=======================================================
+    FOND
+=======================================================*/
+
+.background{
+
+    position:fixed;
+
+    inset:0;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            #2563eb 0%,
+            #4f46e5 45%,
+            #0ea5e9 100%
+        );
+
+    z-index:-2;
+
+}
+
+
+
+/* voile blanc */
+
+.background::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+
+        rgba(255,255,255,.88);
+
+}
+
+
+
+/*=======================================================
+    CONTENEUR
+=======================================================*/
+
+.register-container{
+
+    width:min(1200px,92%);
+
+    margin:70px auto;
+
+    display:grid;
+
+    grid-template-columns:
+
+        1fr 420px;
+
+    gap:45px;
+
+    align-items:center;
+
+}
+
+
+
+/*=======================================================
+    LOGO
+=======================================================*/
+
+.logo{
+
+    margin-bottom:25px;
+
+}
+
+
+
+.logo a{
+
+    text-decoration:none;
+
+}
+
+
+
+.logo h1{
+
+    color:var(--primary);
+
+    font-size:2.6rem;
+
+    font-weight:800;
+
+}
+
+
+
+.logo p{
+
+    margin-top:12px;
+
+    color:var(--text-light);
+
+    font-size:1.1rem;
+
+}
+
+
+
+/*=======================================================
+    CARTE INSCRIPTION
+=======================================================*/
+
+.register-card{
+
+    background:var(--white);
+
+    padding:40px;
+
+    border-radius:22px;
+
+    box-shadow:var(--shadow);
+
+}
+
+
+
+.register-card h2{
+
+    font-size:2rem;
+
+    margin-bottom:30px;
+
+}
+
+
+
+/*=======================================================
+    FORMULAIRE
+=======================================================*/
+
+#register-form{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:22px;
+
+}
+
+
+
+.input-group{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:8px;
+
+}
+
+
+
+.input-group label{
+
+    font-weight:600;
+
+    color:var(--secondary);
+
+}
+
+
+
+.input-group input{
+
+    width:100%;
+
+    height:54px;
+
+    padding:0 18px;
+
+    border:2px solid var(--border);
+
+    border-radius:12px;
+
+    outline:none;
+
+    font-size:16px;
+
+    transition:.25s;
+
+}
+
+
+
+.input-group input:focus{
+
+    border-color:var(--primary);
+
+    box-shadow:
+
+        0 0 0 4px
+
+        rgba(37,99,235,.12);
+
+}
+
+/*=======================================================
+    MOT DE PASSE
+=======================================================*/
+
+.password-box{
+
+    position:relative;
+
+    display:flex;
+
+    align-items:center;
+
+}
+
+
+
+.password-box input{
+
+    padding-right:60px;
+
+}
+
+
+
+.toggle-password{
+
+    position:absolute;
+
+    right:15px;
+
+    width:38px;
+
+    height:38px;
+
+    border:none;
+
+    background:transparent;
+
+    cursor:pointer;
+
+    font-size:20px;
+
+    transition:.25s;
+
+    border-radius:10px;
+
+}
+
+
+
+.toggle-password:hover{
+
+    background:#eef4ff;
+
+}
+
+
+
+/*=======================================================
+    BARRE DE FORCE
+=======================================================*/
+
+.password-strength{
+
+    width:100%;
+
+    height:8px;
+
+    background:#e5e7eb;
+
+    border-radius:999px;
+
+    overflow:hidden;
+
+}
+
+
+
+.strength-bar{
+
+    width:0%;
+
+    height:100%;
+
+    background:var(--danger);
+
+    transition:.35s;
+
+}
+
+
+
+.password-message{
+
+    font-size:14px;
+
+    color:var(--text-light);
+
+    min-height:18px;
+
+}
+
+
+
+/*=======================================================
+    CASE A COCHER
+=======================================================*/
+
+.checkbox{
+
+    display:flex;
+
+    align-items:center;
+
+}
+
+
+
+.checkbox label{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    cursor:pointer;
+
+    color:var(--text);
+
+    font-size:15px;
+
+}
+
+
+
+.checkbox input{
+
+    width:18px;
+
+    height:18px;
+
+    accent-color:var(--primary);
+
+}
+
+
+
+/*=======================================================
+    BOUTON INSCRIPTION
+=======================================================*/
+
+.register-btn{
+
+    width:100%;
+
+    height:56px;
+
+    border:none;
+
+    border-radius:14px;
+
+    background:var(--primary);
+
+    color:white;
+
+    font-size:17px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:.30s;
+
+    margin-top:10px;
+
+}
+
+
+
+.register-btn:hover{
+
+    background:var(--primary-hover);
+
+    transform:translateY(-2px);
+
+    box-shadow:
+
+        0 15px 35px
+
+        rgba(37,99,235,.25);
+
+}
+
+
+
+.register-btn:active{
+
+    transform:scale(.98);
+
+}
+
+
+
+/*=======================================================
+    LIEN CONNEXION
+=======================================================*/
+
+.login-link{
+
+    text-align:center;
+
+    margin-top:25px;
+
+}
+
+
+
+.login-link p{
+
+    color:var(--text-light);
+
+}
+
+
+
+.login-link a{
+
+    text-decoration:none;
+
+    color:var(--primary);
+
+    font-weight:700;
+
+}
+
+
+
+.login-link a:hover{
+
+    text-decoration:underline;
+
+}
+
+
+
+/*=======================================================
+    CARTE AVANTAGES
+=======================================================*/
+
+.features-card{
+
+    background:white;
+
+    border-radius:22px;
+
+    padding:40px;
+
+    box-shadow:var(--shadow);
+
+}
+
+
+
+.features-card h3{
+
+    font-size:28px;
+
+    margin-bottom:30px;
+
+}
+
+
+
+.feature{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+
+    margin-bottom:22px;
+
+}
+
+
+
+.feature span{
+
+    width:52px;
+
+    height:52px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:24px;
+
+    border-radius:14px;
+
+    background:#eef4ff;
+
+}
+
+
+
+.feature p{
+
+    line-height:1.6;
+
+    color:var(--text-light);
+
+}
+
+
+
+/*=======================================================
+    FOOTER
+=======================================================*/
+
+footer{
+
+    margin:50px 0 25px;
+
+    text-align:center;
+
+    color:var(--text-light);
+
+}
+
+/*=======================================================
+    ANIMATIONS
+=======================================================*/
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(30px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+
+
+.register-card{
+
+    animation:fadeUp .7s ease;
+
+}
+
+
+
+.features-card{
+
+    animation:fadeUp .9s ease;
+
+}
+
+
+
+.logo{
+
+    animation:fadeUp .5s ease;
+
+}
+
+
+
+/*=======================================================
+    EFFETS
+=======================================================*/
+
+.register-card:hover{
+
+    transform:translateY(-5px);
+
+    transition:.35s;
+
+}
+
+
+
+.features-card:hover{
+
+    transform:translateY(-5px);
+
+    transition:.35s;
+
+}
+
+
+
+.input-group input:hover{
+
+    border-color:#b8c5d6;
+
+}
+
+
+
+.feature{
+
+    transition:.30s;
+
+}
+
+
+
+.feature:hover{
+
+    transform:translateX(8px);
+
+}
+
+
+
+.feature:hover span{
+
+    transform:scale(1.08);
+
+    transition:.30s;
+
+}
+
+
+
+/*=======================================================
+    RESPONSIVE
+=======================================================*/
+
+@media(max-width:1100px){
+
+    .register-container{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .features-card{
+
+        order:-1;
+
+    }
+
+}
+
+
+
+@media(max-width:700px){
+
+    .register-container{
+
+        width:94%;
+
+        margin:35px auto;
+
+    }
+
+
+
+    .register-card{
+
+        padding:30px 22px;
+
+    }
+
+
+
+    .features-card{
+
+        padding:30px 22px;
+
+    }
+
+
+
+    .logo h1{
+
+        font-size:2rem;
+
+    }
+
+
+
+    .register-card h2{
+
+        font-size:1.8rem;
+
+    }
+
+
+
+    .feature{
+
+        align-items:flex-start;
+
+    }
+
+}
+
+
+
+@media(max-width:500px){
+
+    .input-group input{
+
+        height:50px;
+
+        font-size:15px;
+
+    }
+
+
+
+    .register-btn{
+
+        height:52px;
+
+        font-size:16px;
+
+    }
+
+
+
+    .feature span{
+
+        width:46px;
+
+        height:46px;
+
+        font-size:21px;
+
+    }
+
+}
+
+
+
+/*=======================================================
+    SCROLLBAR
+=======================================================*/
+
+::-webkit-scrollbar{
+
+    width:10px;
+
+}
+
+
+
+::-webkit-scrollbar-track{
+
+    background:#edf2f7;
+
+}
+
+
+
+::-webkit-scrollbar-thumb{
+
+    background:var(--primary);
+
+    border-radius:20px;
+
+}
+
+
+
+::-webkit-scrollbar-thumb:hover{
+
+    background:var(--primary-hover);
+
+}
+
+
+
+/*=======================================================
+    SELECTION
+=======================================================*/
+
+::selection{
+
+    background:var(--primary);
+
+    color:white;
+
+}
+
+/*=========================================
+    Messages Flash
+=========================================*/
+
+.flash{
+
+    width:100%;
+
+    padding:15px;
+
+    margin-bottom:20px;
+
+    border-radius:12px;
+
+    font-weight:600;
+
+    text-align:center;
+
+    animation:fadeUp .35s ease;
+
+}
+
+.flash.error{
+
+    background:#FEE2E2;
+
+    color:#B91C1C;
+
+    border:1px solid #FCA5A5;
+
+}
+
+.flash.success{
+
+    background:#DCFCE7;
+
+    color:#166534;
+
+    border:1px solid #86EFAC;
+
+}
+
+/*=======================================================
+    FIN
+=======================================================*/
