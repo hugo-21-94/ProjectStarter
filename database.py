@@ -4,23 +4,26 @@ ProjectStarter
 
 database.py
 
-Gestion de la base de données
+Gestion de la base de données PostgreSQL
 
 =========================================================
 """
 
-import sqlite3
-from pathlib import Path
-
-
-DATABASE_NAME = "database.db"
+import os
+import psycopg
 
 
 class DatabaseManager:
 
     def __init__(self):
 
-        self.database_path = Path(DATABASE_NAME)
+        self.database_url = os.environ.get("DATABASE_URL")
+
+        if not self.database_url:
+
+            raise RuntimeError(
+                "DATABASE_URL n'est pas configurée."
+            )
 
         self.create_database()
 
@@ -31,7 +34,9 @@ class DatabaseManager:
 
     def connect(self):
 
-        return sqlite3.connect(self.database_path)
+        return psycopg.connect(
+            self.database_url
+        )
 
 
     # =====================================================
@@ -52,7 +57,7 @@ class DatabaseManager:
         cursor.execute("""
         CREATE TABLE IF NOT EXISTS users (
 
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            id SERIAL PRIMARY KEY,
 
             username TEXT UNIQUE NOT NULL,
 
@@ -81,7 +86,7 @@ class DatabaseManager:
         cursor.execute("""
         CREATE TABLE IF NOT EXISTS projects (
 
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            id SERIAL PRIMARY KEY,
 
             user_id INTEGER NOT NULL,
 
@@ -93,7 +98,9 @@ class DatabaseManager:
 
             created_at TEXT,
 
-            FOREIGN KEY(user_id) REFERENCES users(id)
+            FOREIGN KEY(user_id)
+                REFERENCES users(id)
+                ON DELETE CASCADE
 
         )
         """)
@@ -101,44 +108,55 @@ class DatabaseManager:
 
         connection.commit()
 
+        cursor.close()
+
         connection.close()
 
-        # =====================================================
-        # Création d'un utilisateur
-        # =====================================================
 
-    def create_user(self, username, email, password):
+    # =====================================================
+    # Création d'un utilisateur
+    # =====================================================
+
+    def create_user(
+        self,
+        username,
+        email,
+        password
+    ):
+
         connection = self.connect()
 
         cursor = connection.cursor()
 
         cursor.execute(
+            """
+            INSERT INTO users (
 
-                """
-                INSERT INTO users(
-                    username,
-                    email,
-                    password
-                )
+                username,
 
-                VALUES (?, ?, ?)
-                """,
+                email,
 
-                (
-
-                    username,
-
-                    email,
-
-                    password
-
-                )
+                password
 
             )
 
+            VALUES (%s, %s, %s)
+            """,
+
+            (
+                username,
+                email,
+                password
+            )
+
+        )
+
         connection.commit()
 
+        cursor.close()
+
         connection.close()
+
 
     # =====================================================
     # Recherche d'un utilisateur par email
@@ -151,13 +169,12 @@ class DatabaseManager:
         cursor = connection.cursor()
 
         cursor.execute(
-
             """
             SELECT *
 
             FROM users
 
-            WHERE email = ?
+            WHERE email = %s
             """,
 
             (email,)
@@ -166,37 +183,41 @@ class DatabaseManager:
 
         user = cursor.fetchone()
 
+        cursor.close()
+
         connection.close()
 
         return user
 
 
-
+    # =====================================================
+    # Création d'un projet
+    # =====================================================
 
     def create_project(
 
-            self,
+        self,
 
-            user_id,
+        user_id,
 
-            project_name,
+        project_name,
 
-            project_type,
+        project_type,
 
-            zip_name,
+        zip_name,
 
-            created_at
+        created_at
 
     ):
+
         connection = self.connect()
 
         cursor = connection.cursor()
 
         cursor.execute(
-
             """
 
-            INSERT INTO projects(
+            INSERT INTO projects (
 
                 user_id,
 
@@ -210,7 +231,7 @@ class DatabaseManager:
 
             )
 
-            VALUES (?, ?, ?, ?, ?)
+            VALUES (%s, %s, %s, %s, %s)
 
             """,
 
@@ -232,22 +253,29 @@ class DatabaseManager:
 
         connection.commit()
 
+        cursor.close()
+
         connection.close()
 
+
+    # =====================================================
+    # Récupération des projets d'un utilisateur
+    # =====================================================
+
     def get_projects(self, user_id):
+
         connection = self.connect()
 
         cursor = connection.cursor()
 
         cursor.execute(
-
             """
 
             SELECT *
 
             FROM projects
 
-            WHERE user_id = ?
+            WHERE user_id = %s
 
             ORDER BY id DESC
 
@@ -259,9 +287,12 @@ class DatabaseManager:
 
         projects = cursor.fetchall()
 
+        cursor.close()
+
         connection.close()
 
         return projects
+
 
     # =====================================================
     # Nombre de projets d'un utilisateur
@@ -274,14 +305,13 @@ class DatabaseManager:
         cursor = connection.cursor()
 
         cursor.execute(
-
             """
 
             SELECT COUNT(*)
 
             FROM projects
 
-            WHERE user_id = ?
+            WHERE user_id = %s
 
             """,
 
@@ -291,9 +321,12 @@ class DatabaseManager:
 
         total = cursor.fetchone()[0]
 
+        cursor.close()
+
         connection.close()
 
         return total
+
 
     # =====================================================
     # Mise à jour du chemin du ZIP
@@ -301,26 +334,26 @@ class DatabaseManager:
 
     def update_zip_path(
 
-            self,
+        self,
 
-            project_id,
+        project_id,
 
-            zip_path
+        zip_path
 
     ):
+
         connection = self.connect()
 
         cursor = connection.cursor()
 
         cursor.execute(
-
             """
 
             UPDATE projects
 
-            SET zip_name = ?
+            SET zip_name = %s
 
-            WHERE id = ?
+            WHERE id = %s
 
             """,
 
@@ -336,19 +369,22 @@ class DatabaseManager:
 
         connection.commit()
 
+        cursor.close()
+
         connection.close()
+
 
     # =====================================================
     # Dernier projet créé
     # =====================================================
 
     def get_last_project(self):
+
         connection = self.connect()
 
         cursor = connection.cursor()
 
         cursor.execute(
-
             """
 
             SELECT id
@@ -365,28 +401,39 @@ class DatabaseManager:
 
         project = cursor.fetchone()
 
+        cursor.close()
+
         connection.close()
 
         return project
+
 
     # =====================================================
     # Supprimer un projet
     # =====================================================
 
-    def delete_project(self, project_id, user_id):
+    def delete_project(
+
+        self,
+
+        project_id,
+
+        user_id
+
+    ):
+
         connection = self.connect()
 
         cursor = connection.cursor()
 
         cursor.execute(
-
             """
 
             DELETE FROM projects
 
-            WHERE id = ?
+            WHERE id = %s
 
-            AND user_id = ?
+            AND user_id = %s
 
             """,
 
@@ -402,67 +449,87 @@ class DatabaseManager:
 
         connection.commit()
 
+        cursor.close()
+
         connection.close()
+
 
     # =====================================================
     # Nombre d'utilisateurs
     # =====================================================
 
     def count_users(self):
-        connection = sqlite3.connect(DATABASE_NAME)
+
+        connection = self.connect()
 
         cursor = connection.cursor()
 
         cursor.execute(
-
             "SELECT COUNT(*) FROM users"
-
         )
 
         total = cursor.fetchone()[0]
 
+        cursor.close()
+
         connection.close()
 
         return total
+
 
     # =====================================================
     # Nombre de projets
     # =====================================================
 
     def count_projects(self):
-        connection = sqlite3.connect(DATABASE_NAME)
+
+        connection = self.connect()
 
         cursor = connection.cursor()
 
         cursor.execute(
-
             "SELECT COUNT(*) FROM projects"
-
         )
 
         total = cursor.fetchone()[0]
+
+        cursor.close()
 
         connection.close()
 
         return total
 
+
+    # =====================================================
+    # Mettre un utilisateur administrateur
+    # =====================================================
+
     def make_admin_by_id(self, user_id):
+
         connection = self.connect()
 
         cursor = connection.cursor()
 
         cursor.execute(
             """
+
             UPDATE users
+
             SET is_admin = 1
-            WHERE id = ?
+
+            WHERE id = %s
+
             """,
+
             (user_id,)
+
         )
 
         connection.commit()
 
         updated = cursor.rowcount
+
+        cursor.close()
 
         connection.close()
 
