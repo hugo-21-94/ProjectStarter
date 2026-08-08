@@ -552,6 +552,25 @@ def error_500(error):
 
     return render_template("500.html"), 500
 
+@app.route("/setup-admin")
+def setup_admin():
+
+    key = request.args.get("key")
+    email = request.args.get("email")
+
+    if key != "MA_CLE_TEMPORAIRE_TRES_LONGUE":
+        abort(404)
+
+    if not email:
+        return "Adresse e-mail manquante.", 400
+
+    updated = database.make_admin(email)
+
+    if updated == 1:
+        return "Administrateur activé avec succès."
+
+    return "Utilisateur introuvable.", 404
+
 if __name__ == "__main__":
     app.run(
         debug=True,
