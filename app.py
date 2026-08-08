@@ -552,25 +552,6 @@ def error_500(error):
 
     return render_template("500.html"), 500
 
-@app.route("/setup-admin")
-def setup_admin():
-
-    key = request.args.get("key")
-
-    if key != "TA_CLE_TEMPORAIRE":
-        abort(404)
-
-    if "user_id" not in session:
-        return "Tu dois être connecté.", 401
-
-    updated = database.make_admin_by_id(
-        session["user_id"]
-    )
-
-    if updated == 1:
-        return "Administrateur activé avec succès. Déconnecte-toi puis reconnecte-toi."
-
-    return "Utilisateur introuvable.", 404
 
 if __name__ == "__main__":
     app.run(
