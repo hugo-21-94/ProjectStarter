@@ -446,7 +446,7 @@ class DatabaseManager:
 
         return total
 
-    def make_admin(self, email):
+    def make_admin_by_id(self, user_id):
         connection = self.connect()
 
         cursor = connection.cursor()
@@ -455,9 +455,9 @@ class DatabaseManager:
             """
             UPDATE users
             SET is_admin = 1
-            WHERE email = ?
+            WHERE id = ?
             """,
-            (email,)
+            (user_id,)
         )
 
         connection.commit()
