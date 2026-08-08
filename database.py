@@ -445,3 +445,25 @@ class DatabaseManager:
         connection.close()
 
         return total
+
+    def make_admin(self, email):
+        connection = self.connect()
+
+        cursor = connection.cursor()
+
+        cursor.execute(
+            """
+            UPDATE users
+            SET is_admin = 1
+            WHERE email = ?
+            """,
+            (email,)
+        )
+
+        connection.commit()
+
+        updated = cursor.rowcount
+
+        connection.close()
+
+        return updated
