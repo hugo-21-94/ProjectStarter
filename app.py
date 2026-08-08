@@ -556,18 +556,19 @@ def error_500(error):
 def setup_admin():
 
     key = request.args.get("key")
-    email = request.args.get("email")
 
-    if key != "MA_CLE_TEMPORAIRE_TRES_LONGUE":
+    if key != "TA_CLE_TEMPORAIRE":
         abort(404)
 
-    if not email:
-        return "Adresse e-mail manquante.", 400
+    if "user_id" not in session:
+        return "Tu dois être connecté.", 401
 
-    updated = database.make_admin(email)
+    updated = database.make_admin_by_id(
+        session["user_id"]
+    )
 
     if updated == 1:
-        return "Administrateur activé avec succès."
+        return "Administrateur activé avec succès. Déconnecte-toi puis reconnecte-toi."
 
     return "Utilisateur introuvable.", 404
 
